@@ -9,51 +9,52 @@ import {
 import Title from "../Title";
 import styles from "./styles/IndexEventoStyle";
 
+import api from '../../../api';
+
 function IndexEvento() {
 
-  const [EventoList, setEventoList] = useState([])
+    let [EventoList, setEventoList] = useState([])
 
-  useEffect(() => {
-    loadEventosList();
-  }, []);
+    useEffect(() => {
+        loadEventosList();
+    }, []);
+
     function loadEventosList(){
-        fetch('https://localhost:7100/IndexEvento').then((response)=>{
-            return response;
-        }).catch((error)=>{
-            console.log("Error while loading Events");
-        })
-        setEventoList(response.json);
+       api.get('/IndexEvento').then((response)=>{
+            console.log(response);
+            return response.json();
+        });
     }
 
-  return (
-    <View style={styles.container}>
-        <Title/>   
-        <View style={styles.formContext}>
-            <Pressable onPress={ Keyboard.dismiss } style={styles.form}>
-                
-            </Pressable>
-            <FlatList
-            showsVerticalScrollIndicator={false}
-            style={styles.listImcs}
-            data={EventoList}
-            renderItem={({item})=>{
-                return(
-                    <Text style = {styles.resultImcItem} >
-                        <Text style={styles.textResultItemList}>
-                            Resultado IMC = 
+    return (
+        <View style={styles.container}>
+            <Title/>   
+            <View style={styles.formContext}>
+                <Pressable onPress={ Keyboard.dismiss } style={styles.form}>
+                    
+                </Pressable>
+                <FlatList
+                showsVerticalScrollIndicator={false}
+                style={styles.listImcs}
+                data={EventoList}
+                renderItem={({item})=>{
+                    return(
+                        <Text style = {styles.resultImcItem} >
+                            <Text style={styles.textResultItemList}>
+                                Resultado IMC = 
+                            </Text>
+                            {item.imc}
                         </Text>
-                        {item.imc}
-                    </Text>
-                )
-            }}
-            KeyExtractor={(item)=>{
-                item.id
-            }}   
-            >
-            </FlatList>
+                    )
+                }}
+                KeyExtractor={(item)=>{
+                    item.id
+                }}   
+                >
+                </FlatList>
+            </View>
         </View>
-    </View>
-  )
-}
+    )
+    }
 
-export default IndexEvento;
+    export default IndexEvento;
