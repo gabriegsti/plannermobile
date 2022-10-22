@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from "react";
-import { 
-    View, 
-    Text, 
+import React, { useEffect, useState } from "react";
+import {
+    View,
+    Text,
     Pressable,
     Keyboard,
     FlatList
@@ -15,25 +15,27 @@ function IndexEvento() {
 
     let [EventoList, setEventoList] = useState([])
 
-    useEffect(() => {
-        loadEventosList();
-    }, []);
-
-    function loadEventosList(){
-       api.get('/IndexEvento').then((response)=>{
-            console.log(response);
-            return response.json();
-        });
+    async function loadEventosList() {
+        try {
+            let response = await fetch(api.baseURL + '/' + 'indexEvento')
+            console.log(await response.json());
+        } catch (error) {
+            console.error(error);
+        }
+        console.log('depois');
     }
+    loadEventosList();
+    // useEffect(() => { loadEventosList() }, []);
+
 
     return (
         <View style={styles.container}>
-            <Title/>   
+            <Title />
             <View style={styles.formContext}>
-                <Pressable onPress={ Keyboard.dismiss } style={styles.form}>
-                    
+                <Pressable onPress={Keyboard.dismiss} style={styles.form}>
+
                 </Pressable>
-                <FlatList
+                {/* <FlatList
                 showsVerticalScrollIndicator={false}
                 style={styles.listImcs}
                 data={EventoList}
@@ -51,10 +53,10 @@ function IndexEvento() {
                     item.id
                 }}   
                 >
-                </FlatList>
+                </FlatList> */}
             </View>
         </View>
     )
-    }
+}
 
-    export default IndexEvento;
+export default IndexEvento;
