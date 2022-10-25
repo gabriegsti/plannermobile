@@ -4,7 +4,8 @@ import {
     Text,
     Pressable,
     Keyboard,
-    FlatList
+    FlatList,
+    TouchableOpacity
 } from "react-native";
 import Title from "../Title";
 import styles from "./styles/IndexEventoStyle";
@@ -13,47 +14,57 @@ import api from '../../../api';
 
 function IndexEvento() {
 
-    let [EventoList, setEventoList] = useState([])
+    const [EventoList, setEventoList] = useState([]);
 
-    async function loadEventosList() {
-        try {
-            let response = await fetch(api.baseURL + '/' + 'indexEvento')
-            console.log(await response.json());
-        } catch (error) {
+    function loadEventosList() {
+        fetch(api.baseURL + '/' + 'indexEvento')
+        .then((response) => response.json())
+        .then((json) => setEventoList(json))
+        .catch((error) => {
             console.error(error);
-        }
-        console.log('depois');
+        })
     }
-    loadEventosList();
-    // useEffect(() => { loadEventosList() }, []);
-
+    useEffect(() => {
+        loadEventosList();
+    }, []);
 
     return (
         <View style={styles.container}>
             <Title />
             <View style={styles.formContext}>
-                <Pressable onPress={Keyboard.dismiss} style={styles.form}>
-
-                </Pressable>
-                {/* <FlatList
-                showsVerticalScrollIndicator={false}
-                style={styles.listImcs}
-                data={EventoList}
-                renderItem={({item})=>{
-                    return(
-                        <Text style = {styles.resultImcItem} >
-                            <Text style={styles.textResultItemList}>
-                                Resultado IMC = 
-                            </Text>
-                            {item.imc}
-                        </Text>
-                    )
-                }}
-                KeyExtractor={(item)=>{
-                    item.id
-                }}   
+            <TouchableOpacity 
+                    style={styles.adornoButtonTextCadastrar}
+                    >
+                    <Text style={styles.menuButtonTextEvento}>Cadastrar Evento</Text>
+                </TouchableOpacity>
+                <FlatList
+                    // showsVerticalScrollIndicator={false}
+                    style={styles.listImcs}
+                    data={EventoList}
+                    renderItem={({ item }) => {
+                        return (
+                            <View style={styles.resultImcItem}>  
+                                <Text style={styles.textResultItemList}>
+                                    {item.titulo}
+                                </Text>
+                                <TouchableOpacity 
+                                    style={styles.adornoButtonTextEventoEditar}
+                                    >
+                                    <Text style={styles.menuButtonTextEvento}>Editar</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity 
+                                    style={styles.adornoButtonTextEventoExcluir}
+                                    >
+                                    <Text style={styles.menuButtonTextEvento}>Excluir</Text>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    }}
+                    KeyExtractor={(item) =>item.id_Evento}
                 >
-                </FlatList> */}
+                </FlatList>
+
+               
             </View>
         </View>
     )

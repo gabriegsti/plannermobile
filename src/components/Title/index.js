@@ -15,7 +15,7 @@ export default function Title(){
             <TouchableOpacity 
                 style={styles.adornoButtonText}
                 onPress={()=>{
-                    navigation.navigate('IndexEvento')
+                    navigation.navigate('Menu')
                     }}>
                 <Text style={styles.menuButtonText}>Menu</Text>
             </TouchableOpacity>

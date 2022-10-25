@@ -1,3 +1,4 @@
+import reactDom from 'react-dom';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -5,9 +6,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#e0e5e5',
         paddingTop: 80,
-        
-      },
-      formContext: {
+    },
+    formContext: {
         flex:1,
         backgroundColor:"#ffffff",
         borderTopLeftRadius:30,
@@ -64,47 +64,26 @@ const styles = StyleSheet.create({
     resultImcItem:{
         fontSize:26,
         color:"red",
-        height:30,
+        height:50,
         width:"100%",
-        flexDirection:'row',
-        marginBottom: 3,
     },
     textResultItemList:{
         fontSize:14,
-        flexBasis:"40%"
     },
-    adornoButtonTextEventoEditar:{
+    adornoButtonTextMenuListas:{
         backgroundColor:"#1877f2",
         borderRadius:4,
         paddingHorizontal: 1,
-        paddingVertical: 1,
-        margin:2, 
-        flexBasis:"27%"
-    },
-    adornoButtonTextEventoExcluir:{
-        backgroundColor:"#ff0000",
-        borderRadius:4,
-        paddingHorizontal: 1,
-        paddingVertical: 1,
-        margin:2, 
-        flexBasis:"27%"
+        paddingVertical: 7,
+        marginBottom:5,
+
     },
     menuButtonTextEvento:{
         color:"#ffffff",
         fontWeight:"bold",
         paddingHorizontal:30,
+        textAlign:"center",
     },
-    menuButtonTextEvento:{
-        color:"#ffffff",
-        fontWeight:"bold",
-        paddingHorizontal:30,
-    },
-    adornoButtonTextCadastrar:{
-        backgroundColor:"#1877f2",
-        borderRadius:4,
-        paddingHorizontal: 1,
-        paddingVertical: 1,
-    }
 });
 
 export default styles
