@@ -11,10 +11,13 @@ import {
 } from "react-native";
 import styles from "./styles/indexMenuStyle";
 import Title from "../Title";
+import { useNavigation } from '@react-navigation/native';
 
 
 
 function Menu(){
+
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
@@ -24,6 +27,9 @@ function Menu(){
                     <View style={styles.resultImcItem}>
                         <TouchableOpacity 
                             style={styles.adornoButtonTextMenuListas}
+                            onPress={()=>{
+                                navigation.navigate('IndexEvento')
+                                }}
                             >
                             <Text style={styles.menuButtonTextEvento}>Evento</Text>
                         </TouchableOpacity>
@@ -41,7 +47,6 @@ function Menu(){
                 </View>
             </View>
         </View>
-        
     )
 }
 

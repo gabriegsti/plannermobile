@@ -11,10 +11,13 @@ import Title from "../Title";
 import styles from "./styles/IndexEventoStyle";
 
 import api from '../../../api';
+import { useNavigation } from "@react-navigation/native";
 
 function IndexEvento() {
 
-    const [EventoList, setEventoList] = useState([]);
+    const [EventoList, setEventoList] = useState([]);    
+    const navigation =   useNavigation();
+
 
     function loadEventosList() {
         fetch(api.baseURL + '/' + 'indexEvento')
@@ -34,6 +37,9 @@ function IndexEvento() {
             <View style={styles.formContext}>
             <TouchableOpacity 
                     style={styles.adornoButtonTextCadastrar}
+                    onPress={()=>{
+                        navigation.navigate('CreateEvento')
+                        }}
                     >
                     <Text style={styles.menuButtonTextEvento}>Cadastrar Evento</Text>
                 </TouchableOpacity>

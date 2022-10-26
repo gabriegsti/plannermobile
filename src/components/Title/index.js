@@ -3,12 +3,11 @@ import {View, Text,TouchableOpacity } from "react-native"
 import styles from "./style";
 import { useNavigation } from '@react-navigation/native';
 
-function goToMenu(){
-    
-}
 
 export default function Title(){
-        const navigation = useNavigation();
+    
+    const navigation = useNavigation();
+    
     return(
         <View style={styles.boxTitle}>
             <Text style={styles.textTitle}>Planner</Text>

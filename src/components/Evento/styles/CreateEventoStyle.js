@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
     },
     textResultItemList:{
         fontSize:14,
+    },
+    DateComponente:{
+        width: 300,
     }
 });
 
