@@ -22,6 +22,10 @@ export default function CreateEvento(){
     const [date, setDate] = useState(new Date());
     const [exibirCalendario, setExibirCalendario] = useState(false);
 
+    const onChange = (event, selectedDate) => {
+        setDate(selectedDate);
+    };
+
     return (
         <View style={styles.container}>
             <Title />
