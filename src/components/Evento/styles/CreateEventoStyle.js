@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#e0e5e5',
+        paddingTop: 80,
+        
+    },
     formContext: {
         flex:1,
         backgroundColor:"#ffffff",
@@ -64,9 +70,12 @@ const styles = StyleSheet.create({
     textResultItemList:{
         fontSize:14,
     },
-    DateComponente:{
-        width: 300,
-    }
+    inputDate:{
+        width:"90%",
+        height:35,
+        margin:6,
+        paddingLeft:20,
+    },
 });
 
 export default styles

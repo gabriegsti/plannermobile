@@ -6,15 +6,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#e0e5e5',
         paddingTop: 80,
         
-      },
-      formContext: {
-        flex:1,
-        backgroundColor:"#ffffff",
-        borderTopLeftRadius:30,
-        borderTopRightRadius:30,
-        alignItems:"center",
-        paddingTop:30,
-        marginTop:30
+    },
+    formContext: {
+    flex:1,
+    backgroundColor:"#ffffff",
+    borderTopLeftRadius:30,
+    borderTopRightRadius:30,
+    alignItems:"center",
+    paddingTop:30,
+    marginTop:30
     },
     form:{
         width:"100%",
