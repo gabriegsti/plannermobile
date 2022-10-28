@@ -29,7 +29,7 @@ function IndexEvento() {
     }
     useEffect(() => {
         loadEventosList();
-    }, []);
+    }, [EventoList]);
 
     return (
         <View style={styles.container}>
@@ -55,6 +55,12 @@ function IndexEvento() {
                                 </Text>
                                 <TouchableOpacity 
                                     style={styles.adornoButtonTextEventoEditar}
+                                    onPress={()=>{
+                                        navigation.navigate('EditEvento',{
+                                            id: item.id_Evento,
+                                            titulo: item.titulo,
+                                            data_Hora: item.data_Hora})
+                                        }}
                                     >
                                     <Text style={styles.menuButtonTextEvento}>Editar</Text>
                                 </TouchableOpacity>

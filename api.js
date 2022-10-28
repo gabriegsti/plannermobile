@@ -1,6 +1,6 @@
 
 const instance = {
-    baseURL: 'https://b799-2804-14d-5c74-a5ea-3586-55a3-9e2c-4c9a.sa.ngrok.io',
+    baseURL: 'https://0bbf-2804-14d-5c74-a5ea-b512-17a8-c46b-47b5.sa.ngrok.io',
 };
 export default instance;
 
