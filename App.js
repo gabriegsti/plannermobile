@@ -5,7 +5,7 @@ import IndexEvento from './src/components/Evento';
 import Menu from './src/components/Menu';
 import CreateEvento from './src/components/Evento/create';
 import EditEvento from './src/components/Evento/edit';
-
+import IndexMateria from './src/components/Materias/index';
 
 const Stack = createNativeStackNavigator(); 
 
@@ -17,7 +17,8 @@ export default function App() {
         <Stack.Screen options={{ headerShown: false }} name="IndexEvento" component={ IndexEvento }/>
         <Stack.Screen options={{ headerShown: false }} name="CreateEvento" component={ CreateEvento }/>
         <Stack.Screen options={{ headerShown: false }} name="EditEvento" component={ EditEvento }/>
-       </Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="IndexMateria" component={ IndexMateria }/>
+       </Stack.Navigator> 
     </NavigationContainer>
   );
 }

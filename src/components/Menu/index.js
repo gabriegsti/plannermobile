@@ -35,6 +35,9 @@ function Menu(){
                         </TouchableOpacity>
                         <TouchableOpacity 
                             style={styles.adornoButtonTextMenuListas}
+                            onPress={()=>{
+                                navigation.navigate('IndexMateria')
+                                }}
                             >
                             <Text style={styles.menuButtonTextEvento}>Matérias</Text>
                         </TouchableOpacity>

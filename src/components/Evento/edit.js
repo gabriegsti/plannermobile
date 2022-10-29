@@ -16,9 +16,9 @@ import api from "../../../api";
 
 
 function EditEvento({ route }){
-    const {id_Evento, titulo, data_Hora} = route.params; 
-    const [tituloInput, setTitulo] = useState(null); 
-    
+    const {id, titulo, data_Hora} = route.params; 
+    const [tituloInput, setTitulo] = useState(titulo); 
+    const [idEvento,setIdEvento] = useState(id);
     const [errorMessageDia, setErrorMessageDia] = useState(null);
     const [errorMessageMes, setErrorMessageMes] = useState(null);
     const [errorMessageAno, setErrorMessageAno] = useState(null);
@@ -30,15 +30,15 @@ function EditEvento({ route }){
 
     function SalvarEvento (){
         let date = ano + '-' + mes + '-' + dia ;
-        console.log(date);
-        fetch(api.baseURL + '/' + 'EditarEvento', {
+        fetch(api.baseURL + '/' + 'AtualizaEvento', {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
               },
             body: JSON.stringify({
-                Titulo: evento,
+                id_Evento: id,
+                Titulo: tituloInput,
                 Data_Hora: date
             }) 
         });
@@ -54,7 +54,7 @@ function EditEvento({ route }){
                     <TextInput
                         style={styles.input}
                         onChangeText={setTitulo}
-                        value={titulo}
+                        value={tituloInput}
                         placeholder="Reunião de trabalho"
                     ></TextInput>
                     <Text style={styles.formLabel}>Data</Text>

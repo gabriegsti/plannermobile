@@ -18,6 +18,11 @@ function IndexEvento() {
     const [EventoList, setEventoList] = useState([]);    
     const navigation =   useNavigation();
 
+    function DeleteEvento(id_Evento){
+        fetch(api.baseURL + '/' + 'RemoverEventoPorId'+ '/' + id_Evento , {
+            method: 'DELETE'
+        });
+    }
 
     function loadEventosList() {
         fetch(api.baseURL + '/' + 'indexEvento')
@@ -27,6 +32,7 @@ function IndexEvento() {
             console.error(error);
         })
     }
+
     useEffect(() => {
         loadEventosList();
     }, [EventoList]);
@@ -44,7 +50,6 @@ function IndexEvento() {
                     <Text style={styles.menuButtonTextEvento}>Cadastrar Evento</Text>
                 </TouchableOpacity>
                 <FlatList
-                    // showsVerticalScrollIndicator={false}
                     style={styles.listImcs}
                     data={EventoList}
                     renderItem={({ item }) => {
@@ -66,8 +71,12 @@ function IndexEvento() {
                                 </TouchableOpacity>
                                 <TouchableOpacity 
                                     style={styles.adornoButtonTextEventoExcluir}
+                                    onPress={() => {
+                                        DeleteEvento(item.id_Evento)
+                                    }}  
                                     >
                                     <Text style={styles.menuButtonTextEvento}>Excluir</Text>
+                                    
                                 </TouchableOpacity>
                             </View>
                         )
@@ -81,5 +90,7 @@ function IndexEvento() {
         </View>
     )
 }
+
+
 
 export default IndexEvento;
