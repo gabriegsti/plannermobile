@@ -84,8 +84,6 @@ function IndexEvento() {
                     KeyExtractor={(item) =>item.id_Evento}
                 >
                 </FlatList>
-
-               
             </View>
         </View>
     )
