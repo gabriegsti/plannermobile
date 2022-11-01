@@ -7,12 +7,13 @@ const styles = StyleSheet.create({
         paddingTop: 80,
     },
     formContext: {
-        flex:1,
-        backgroundColor:"#ffffff",
-        borderTopLeftRadius:30,
-        borderTopRightRadius:30,
-        alignItems:"center",
-        paddingTop:30,
+    flex:1,
+    backgroundColor:"#ffffff",
+    borderTopLeftRadius:30,
+    borderTopRightRadius:30,
+    alignItems:"center",
+    paddingTop:30,
+    marginTop:30
     },
     form:{
         width:"100%",
@@ -62,16 +63,52 @@ const styles = StyleSheet.create({
     resultImcItem:{
         fontSize:26,
         color:"red",
-        height:50,
+        height:30,
         width:"100%",
-        paddingRight:20,
+        flexDirection:'row',
+        marginBottom: 3,
     },
     textResultItemList:{
         fontSize:14,
+        flexBasis:"40%"
     },
-    inputDate:{
+    adornoButtonTextEventoEditar:{
+        backgroundColor:"#1877f2",
+        borderRadius:4,
+        paddingHorizontal: 1,
+        paddingVertical: 1,
+        margin:2, 
+        flexBasis:"27%"
+    },
+    adornoButtonTextEventoExcluir:{
+        backgroundColor:"#ff0000",
+        borderRadius:4,
+        paddingHorizontal: 1,
+        paddingVertical: 1,
+        margin:2, 
+        flexBasis:"27%"
+    },
+    menuButtonTextEvento:{
+        color:"#ffffff",
+        fontWeight:"bold",
+        paddingHorizontal:30,
+    },
+    menuButtonTextEvento:{
+        color:"#ffffff",
+        fontWeight:"bold",
+        paddingHorizontal:30,
+    },
+    adornoButtonTextCadastrar:{
+        backgroundColor:"#1877f2",
+        borderRadius:4,
+        paddingHorizontal: 1,
+        paddingVertical: 1,
+    },
+    inputBigText:{
         width:"90%",
-        height:35,
+        borderRadius:50,
+        backgroundColor:"#f6f6f6",
+        height:55,
         margin:6,
         paddingLeft:20,
     },

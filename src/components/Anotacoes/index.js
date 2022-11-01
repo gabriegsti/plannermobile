@@ -46,7 +46,7 @@ function IndexAnotacoes() {
                         navigation.navigate('CreateAnotacoes')
                         }}
                     >
-                    <Text style={styles.menuButtonTextEvento}>Cadastrar Evento</Text>
+                    <Text style={styles.menuButtonTextEvento}>Cadastrar Anotações</Text>
                 </TouchableOpacity>
                 <FlatList
                     style={styles.listImcs}
