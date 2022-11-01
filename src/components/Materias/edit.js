@@ -33,7 +33,6 @@ function EditMateria({ route }){
     
 
     function SalvarMateria (){
-        let date = ano + '-' + mes + '-' + dia ;
         fetch(api.baseURL + '/' + 'AtualizaMateria', {
             method: 'PUT',
             headers: {
@@ -44,11 +43,11 @@ function EditMateria({ route }){
                 Id_Materia: id,              
                 Titulo: tituloInput,
                 Email: emailInput,
-                Professor:professorInput,
+                Professor: professorInput,
                 Data_Inicio: inicioInput,
                 Data_Fim: fimInput
             }) 
-        });
+    });
     }
     
 

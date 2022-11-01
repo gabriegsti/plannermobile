@@ -8,49 +8,49 @@ import {
     TouchableOpacity
 } from "react-native";
 import Title from "../Title";
-import styles from './styles/indexMateriaStyle';
+import styles from './styles/IndexAnotacoesStyle';
 import api from '../../../api';
 import { useNavigation } from "@react-navigation/native";
 
+function IndexAnotacoes() {
 
-function IndexMateria() {
-    const [MateriasList, setMateriasList] = useState([]);    
-    const navigation = useNavigation();
+    const [AnotacaoList, setEventoList] = useState([]);    
+    const navigation =   useNavigation();
 
-    function DeleteMateria(id){
-        fetch(api.baseURL + '/' + 'RemoverMateriaPorId'+ '/' + id , {
+    function DeleteAnotacao(id){
+        fetch(api.baseURL + '/' + 'RemoverAnotacaoPorId'+ '/' + id , {
             method: 'DELETE'
         });
     }
 
-    function loadMateriasList() {
-        fetch(api.baseURL + '/' + 'IndexMateria')
+    function loadAnotacaoList() {
+        fetch(api.baseURL + '/' + 'indexAnotacao')
         .then((response) => response.json())
-        .then((json) => setMateriasList(json))
+        .then((json) => setEventoList(json))
         .catch((error) => {
             console.error(error);
         })
     }
 
     useEffect(() => {
-        loadMateriasList();
-    }, [MateriasList]);
+        loadAnotacaoList();
+    }, [AnotacaoList]);
 
     return (
         <View style={styles.container}>
-            <Title/>
+            <Title />
             <View style={styles.formContext}>
             <TouchableOpacity 
                     style={styles.adornoButtonTextCadastrar}
                     onPress={()=>{
-                        navigation.navigate('CreateMateria')
+                        navigation.navigate('CreateAnotacoes')
                         }}
                     >
-                    <Text style={styles.menuButtonTextEvento}>Cadastrar Matéria</Text>
-            </TouchableOpacity>
-            <FlatList
+                    <Text style={styles.menuButtonTextEvento}>Cadastrar Evento</Text>
+                </TouchableOpacity>
+                <FlatList
                     style={styles.listImcs}
-                    data={MateriasList}
+                    data={AnotacaoList}
                     renderItem={({ item }) => {
                         return (
                             <View style={styles.resultImcItem}>  
@@ -60,14 +60,11 @@ function IndexMateria() {
                                 <TouchableOpacity 
                                     style={styles.adornoButtonTextEventoEditar}
                                     onPress={()=>{
-                                        navigation.navigate('EditMateria',{
-                                            id:item.id_Materia,
-                                            titulo: item.titulo,
-                                            email:item.email,
-                                            professor:item.professor,
-                                            data_Inicio:item.data_Inicio,
-                                            data_Fim:item.data_Fim
-                                        })
+                                        navigation.navigate('EditAnotacoes',{
+                                            id: item.Id_Anotacao,
+                                            titulo: item.Titulo,
+                                            link: item.Link,
+                                            campo_texto: item.Campo_Texto})
                                         }}
                                     >
                                     <Text style={styles.menuButtonTextEvento}>Editar</Text>
@@ -75,7 +72,7 @@ function IndexMateria() {
                                 <TouchableOpacity 
                                     style={styles.adornoButtonTextEventoExcluir}
                                     onPress={() => {
-                                        DeleteMateria(item.id_Materia)
+                                        DeleteAnotacao(item.Id_Anotacao)
                                     }}  
                                     >
                                     <Text style={styles.menuButtonTextEvento}>Excluir</Text>
@@ -84,15 +81,14 @@ function IndexMateria() {
                             </View>
                         )
                     }}
-                    KeyExtractor={(item) =>item.id_Materia}
+                    KeyExtractor={(item) =>item.Id_Anotacao}
                 >
                 </FlatList>
             </View>
         </View>
-
     )
 }
 
 
 
-export default IndexMateria;
+export default IndexAnotacoes;

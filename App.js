@@ -8,6 +8,10 @@ import EditEvento from './src/components/Evento/edit';
 import IndexMateria from './src/components/Materias/index';
 import CreateMateria from './src/components/Materias/create';
 import EditMateria from './src/components/Materias/edit';
+import IndexAnotacoes from './src/components/Anotacoes/index';
+import CreateAnotacoes from './src/components/Anotacoes/create';
+import EditAnotacoes from './src/components/Anotacoes/edit';
+
 
 const Stack = createNativeStackNavigator(); 
 
@@ -22,6 +26,9 @@ export default function App() {
         <Stack.Screen options={{ headerShown: false }} name="IndexMateria" component={ IndexMateria }/>
         <Stack.Screen options={{ headerShown: false }} name="CreateMateria" component={ CreateMateria }/>
         <Stack.Screen options={{ headerShown: false }} name="EditMateria" component={ EditMateria }/>
+        <Stack.Screen options={{ headerShown: false }} name="IndexAnotacoes" component={ IndexAnotacoes }/>
+        <Stack.Screen options={{ headerShown: false }} name="CreateAnotacoes" component={ CreateAnotacoes }/>
+        <Stack.Screen options={{ headerShown: false }} name="EditAnotacoes" component={ EditAnotacoes }/>
        </Stack.Navigator> 
     </NavigationContainer>
   );

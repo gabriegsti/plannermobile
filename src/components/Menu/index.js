@@ -43,6 +43,9 @@ function Menu(){
                         </TouchableOpacity>
                         <TouchableOpacity 
                             style={styles.adornoButtonTextMenuListas}
+                            onPress={()=>{
+                                navigation.navigate('IndexAnotacoes')
+                                }}
                             >
                             <Text style={styles.menuButtonTextEvento}>Anotacoes</Text>
                         </TouchableOpacity>
