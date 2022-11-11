@@ -4,7 +4,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#e0e5e5',
-        paddingTop: 80,
+        paddingTop: 80, 
+        alignContent: 'center',
+        justifyContent:'center'
     },
     formContext: {
     flex:1,
@@ -36,12 +38,12 @@ const styles = StyleSheet.create({
         borderRadius:50,
         alignItems:"center",
         justifyContent:"center",
-        width:"90%",
+        width:"45%",
         backgroundColor:"#FF0043",
         paddingTop:14,
         paddingBottom:14,
         marginLeft:12,
-        margin:30
+        margin:30,
     },
     textButtonCalculator:{
         fontSize: 20,
@@ -104,15 +106,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 1,
         paddingVertical: 1,
     },
-    inputBigText:{
-        width:"90%",
-        borderRadius:50,
-        backgroundColor:"#f6f6f6",
-        height:150,
-        margin:6,
-        padding:20,
-        textAlignVertical:'top',
+    textTimer: {
+        alignContent: 'center',
+        fontSize:30
     },
+    buttonContainer:{
+        width: "50%",
+        alignContent:'center',
+    }
 });
 
 export default styles

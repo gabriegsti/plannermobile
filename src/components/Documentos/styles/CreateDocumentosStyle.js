@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#e0e5e5',
         paddingTop: 80,
+        
     },
     formContext: {
     flex:1,
@@ -17,7 +18,8 @@ const styles = StyleSheet.create({
     },
     form:{
         width:"100%",
-        height:"auto",
+        height:800,
+        alignItems: 'center'
     },
     formLabel:{
         color:"#000000",
@@ -36,12 +38,12 @@ const styles = StyleSheet.create({
         borderRadius:50,
         alignItems:"center",
         justifyContent:"center",
-        width:"90%",
+        width:"30%",
         backgroundColor:"#FF0043",
         paddingTop:14,
         paddingBottom:14,
         marginLeft:12,
-        margin:30
+        margin:30,
     },
     textButtonCalculator:{
         fontSize: 20,
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
     resultImcItem:{
         fontSize:26,
         color:"red",
-        height:30,
+        height:32,
         width:"100%",
         flexDirection:'row',
         marginBottom: 3,
@@ -73,12 +75,14 @@ const styles = StyleSheet.create({
         flexBasis:"40%"
     },
     adornoButtonTextEventoEditar:{
+        marginTop: 40,
         backgroundColor:"#1877f2",
         borderRadius:4,
         paddingHorizontal: 1,
         paddingVertical: 1,
         margin:2, 
-        flexBasis:"27%"
+        width: "60%",
+        alignItems: 'center'
     },
     adornoButtonTextEventoExcluir:{
         backgroundColor:"#ff0000",
@@ -86,7 +90,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 1,
         paddingVertical: 1,
         margin:2, 
-        flexBasis:"27%"
+        width: "60%",
+        alignItems: 'center'
+
     },
     menuButtonTextEvento:{
         color:"#ffffff",
@@ -103,16 +109,7 @@ const styles = StyleSheet.create({
         borderRadius:4,
         paddingHorizontal: 1,
         paddingVertical: 1,
-    },
-    inputBigText:{
-        width:"90%",
-        borderRadius:50,
-        backgroundColor:"#f6f6f6",
-        height:150,
-        margin:6,
-        padding:20,
-        textAlignVertical:'top',
-    },
+    }
 });
 
 export default styles

@@ -8,7 +8,9 @@ import {
     Pressable,
     Keyboard,
     Button,
-    Platform
+    Platform,
+    ScrollView,
+    KeyboardAvoidingView
 } from "react-native";
 import styles from "./styles/CreateEventoStyle";
 import Title from "../Title";
@@ -45,9 +47,9 @@ function CreateEvento(){
 
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Title />
-            <View style={styles.formContext}>
+            <KeyboardAvoidingView style={styles.formContext}>
                 <Pressable onPress={ Keyboard.dismiss } style={styles.form}>
                     <Text style={styles.formLabel}>Evento: </Text>
                     <TextInput
@@ -97,8 +99,8 @@ function CreateEvento(){
                         </Text>
                     </TouchableOpacity>
                 </Pressable>
-            </View>
-        </View>
+            </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 

@@ -9,7 +9,8 @@ import {
     Keyboard,
     Button,
     Platform,
-    KeyboardAvoidingView 
+    KeyboardAvoidingView,
+    ScrollView
 } from "react-native";
 import styles from "./styles/CreateAnotacoesStyle";
 import Title from "../Title";
@@ -23,7 +24,7 @@ function CreateAnotacoes(){
     const [campo_texto, setCampo_texto] = useState(null); 
 
     function SalvarAnotacao (){
-        fetch(api.baseURL + '/' + 'SalvarAnotacao', {
+        fetch(api.baseURL + '/' + 'CadastrarAnotacao', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -39,10 +40,10 @@ function CreateAnotacoes(){
 
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Title />
-            <View style={styles.formContext}>
-                <Pressable onPress={ Keyboard.dismiss } style={styles.form}>
+            <KeyboardAvoidingView style={styles.formContext} behavior="padding">
+                <Pressable onPress={ () => {Keyboard.dismiss} } style={styles.form}>
                     <Text style={styles.formLabel}>Anotacao: </Text>
                     <TextInput
                         style={styles.input}
@@ -59,6 +60,8 @@ function CreateAnotacoes(){
                     ></TextInput>
                     <Text style={styles.formLabel}>Texto: </Text>
                     <TextInput
+                        multiline 
+                        numberOfLines={4}
                         style={styles.inputBigText}
                         onChangeText={setCampo_texto}
                         value={campo_texto}
@@ -77,8 +80,8 @@ function CreateAnotacoes(){
                         </Text>
                     </TouchableOpacity>
                 </Pressable>
-            </View>
-        </View>
+            </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 

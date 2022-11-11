@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#e0e5e5',
         paddingTop: 80,
+        
     },
     formContext: {
     flex:1,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
         paddingTop:14,
         paddingBottom:14,
         marginLeft:12,
-        margin:30
+        margin:30,
     },
     textButtonCalculator:{
         fontSize: 20,
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     resultImcItem:{
         fontSize:26,
         color:"red",
-        height:30,
+        height:32,
         width:"100%",
         flexDirection:'row',
         marginBottom: 3,
@@ -103,16 +104,7 @@ const styles = StyleSheet.create({
         borderRadius:4,
         paddingHorizontal: 1,
         paddingVertical: 1,
-    },
-    inputBigText:{
-        width:"90%",
-        borderRadius:50,
-        backgroundColor:"#f6f6f6",
-        height:150,
-        margin:6,
-        padding:20,
-        textAlignVertical:'top',
-    },
+    }
 });
 
 export default styles

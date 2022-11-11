@@ -49,6 +49,22 @@ function Menu(){
                             >
                             <Text style={styles.menuButtonTextEvento}>Anotacoes</Text>
                         </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.adornoButtonTextMenuListas}
+                            onPress={()=>{
+                                navigation.navigate('IndexDocumentos')
+                                }}
+                            >
+                            <Text style={styles.menuButtonTextEvento}>Documentos</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.adornoButtonTextMenuListas}
+                            onPress={()=>{
+                                navigation.navigate('IndexPomodoro')
+                                }}
+                            >
+                            <Text style={styles.menuButtonTextEvento}>Pomodoro</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>

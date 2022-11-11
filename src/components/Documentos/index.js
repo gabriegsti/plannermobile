@@ -5,36 +5,65 @@ import {
     Pressable,
     Keyboard,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Image,
+    RNFetchBlob,
+    PermissionsAndroid 
 } from "react-native";
 import Title from "../Title";
-import styles from './styles/IndexAnotacoesStyle';
+import styles from "./styles/IndexDocumentos.Style";
+
 import api from '../../../api';
 import { useNavigation } from "@react-navigation/native";
+import * as MediaLibrary from 'expo-media-library';
+import * as FileSystem from 'expo-file-system';
+import * as Permissions from 'expo-permissions';
 
-function IndexAnotacoes() {
 
-    const [AnotacaoList, setEventoList] = useState([]);    
+function IndexDocumentos() {
+
+    const [DocumentosList, setDocumentosList] = useState([]);    
     const navigation =   useNavigation();
 
-    function DeleteAnotacao(id){
-        fetch(api.baseURL + '/' + 'RemoverAnotacaoPorId'+ '/' + id , {
+    function DeleteEvento(Id_Documento){
+        fetch(api.baseURL + '/' + 'RemoverEventoPorId'+ '/' + Id_Documento , {
             method: 'DELETE'
         });
     }
 
-    function loadAnotacaoList() {
-        fetch(api.baseURL + '/' + 'indexAnotacao')
+    function loadDocumentosList() {
+        fetch(api.baseURL + '/' + 'indexDocumentos')
         .then((response) => response.json())
-        .then((json) => setEventoList(json))
+        .then((json) => setDocumentosList(json))
         .catch((error) => {
             console.error(error);
         })
     }
 
+    downloadFile = (item)  => {
+      const uri = api.baseURL + '/' + 'DownloadDocumentos' + '/' + item.id_Documento
+      let fileUri = FileSystem.documentDirectory + item.titulo;
+      FileSystem.downloadAsync(uri, fileUri)
+      .then(({ uri }) => {
+          this.saveFile(uri);
+        })
+        .catch(error => {
+          console.error(error);
+        })
+  }
+  
+  saveFile = async (fileUri) => {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      if (status === "granted") {
+          const asset = await MediaLibrary.createAssetAsync(fileUri)
+          await MediaLibrary.createAlbumAsync("Download", asset, false)
+      }
+  }
+
+  
     useEffect(() => {
-        loadAnotacaoList();
-    }, [AnotacaoList]);
+        loadDocumentosList();
+    }, [DocumentosList]);
 
     return (
         <View style={styles.container}>
@@ -43,45 +72,39 @@ function IndexAnotacoes() {
             <TouchableOpacity 
                     style={styles.adornoButtonTextCadastrar}
                     onPress={()=>{
-                        navigation.navigate('CreateAnotacoes')
+                        navigation.navigate('DocPicker')
                         }}
                     >
-                    <Text style={styles.menuButtonTextEvento}>Cadastrar Anotações</Text>
+                    <Text style={styles.menuButtonTextEvento}>Cadastrar Documentos</Text>
                 </TouchableOpacity>
                 <FlatList
                     style={styles.listImcs}
-                    data={AnotacaoList}
+                    data={DocumentosList}
                     renderItem={({ item }) => {
                         return (
                             <View style={styles.resultImcItem}>  
                                 <Text style={styles.textResultItemList}>
                                     {item.titulo}
                                 </Text>
+                                
                                 <TouchableOpacity 
                                     style={styles.adornoButtonTextEventoEditar}
-                                    onPress={()=>{
-                                        navigation.navigate('EditAnotacoes',{
-                                            id: item.id_Anotacao,
-                                            titulo: item.titulo,
-                                            link: item.link,
-                                            campo_texto: item.campo_Texto})
-                                        }}
+                                    onPress={() => downloadFile(item)}
                                     >
-                                    <Text style={styles.menuButtonTextEvento}>Editar</Text>
+                                    <Text style={styles.menuButtonTextEvento}>Baixar</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity 
                                     style={styles.adornoButtonTextEventoExcluir}
                                     onPress={() => {
-                                        DeleteAnotacao(item.id_Anotacao)
+                                        DeleteEvento(item.id_Documento)
                                     }}  
                                     >
                                     <Text style={styles.menuButtonTextEvento}>Excluir</Text>
-                                    
                                 </TouchableOpacity>
                             </View>
                         )
                     }}
-                    KeyExtractor={(item) =>item.id_Anotacao}
+                    KeyExtractor={(item) =>item.id_Documento}
                 >
                 </FlatList>
             </View>
@@ -91,4 +114,4 @@ function IndexAnotacoes() {
 
 
 
-export default IndexAnotacoes;
+export default IndexDocumentos;

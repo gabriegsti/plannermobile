@@ -8,7 +8,9 @@ import {
     Pressable,
     Keyboard,
     Button,
-    Platform
+    Platform,
+    ScrollView,
+    KeyboardAvoidingView
 } from "react-native";
 import styles from "./styles/createMateriaStyle";
 import Title from "../Title";
@@ -64,9 +66,9 @@ function CreateMateria(){
 
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Title />
-            <View style={styles.formContext}>
+            <KeyboardAvoidingView  style={styles.formContext}>
                 <Pressable onPress={ Keyboard.dismiss } style={styles.form}>
                     <Text style={styles.formLabel}>Materia: </Text>
                     <TextInput
@@ -117,8 +119,8 @@ function CreateMateria(){
                         </Text>
                     </TouchableOpacity>
                 </Pressable>
-            </View>
-        </View>
+            </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 
