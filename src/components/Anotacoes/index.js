@@ -5,7 +5,8 @@ import {
     Pressable,
     Keyboard,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import Title from "../Title";
 import styles from './styles/IndexAnotacoesStyle';
@@ -18,9 +19,22 @@ function IndexAnotacoes() {
     const navigation =   useNavigation();
 
     function DeleteAnotacao(id){
-        fetch(api.baseURL + '/' + 'RemoverAnotacaoPorId'+ '/' + id , {
-            method: 'DELETE'
-        });
+        Alert.alert(
+            "Excluir",
+            "Confirmar Exclusão?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK", onPress: () =>  fetch(api.baseURL + '/' + 'RemoverAnotacaoPorId'+ '/' + id , {
+                        method: 'DELETE'
+                    })
+                }
+            ]
+        );
     }
 
     function loadAnotacaoList() {

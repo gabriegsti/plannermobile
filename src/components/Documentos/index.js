@@ -8,7 +8,8 @@ import {
     TouchableOpacity,
     Image,
     RNFetchBlob,
-    PermissionsAndroid 
+    PermissionsAndroid,
+    Alert 
 } from "react-native";
 import Title from "../Title";
 import styles from "./styles/IndexDocumentos.Style";
@@ -25,10 +26,23 @@ function IndexDocumentos() {
     const [DocumentosList, setDocumentosList] = useState([]);    
     const navigation =   useNavigation();
 
-    function DeleteEvento(Id_Documento){
-        fetch(api.baseURL + '/' + 'RemoverEventoPorId'+ '/' + Id_Documento , {
-            method: 'DELETE'
-        });
+    function DeleteDocumento(Id_Documento) {
+        Alert.alert(
+            "Excluir",
+            "Confirmar Exclusão?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK", onPress: () => fetch(api.baseURL + '/' + 'RemoverDocumentoPorId' + '/' + Id_Documento, {
+                        method: 'DELETE'
+                    })
+                }
+            ]
+        );
     }
 
     function loadDocumentosList() {
@@ -96,7 +110,7 @@ function IndexDocumentos() {
                                 <TouchableOpacity 
                                     style={styles.adornoButtonTextEventoExcluir}
                                     onPress={() => {
-                                        DeleteEvento(item.id_Documento)
+                                        DeleteDocumento(item.id_Documento)
                                     }}  
                                     >
                                     <Text style={styles.menuButtonTextEvento}>Excluir</Text>

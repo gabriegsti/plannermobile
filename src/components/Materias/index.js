@@ -5,7 +5,8 @@ import {
     Pressable,
     Keyboard,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import Title from "../Title";
 import styles from './styles/indexMateriaStyle';
@@ -17,10 +18,23 @@ function IndexMateria() {
     const [MateriasList, setMateriasList] = useState([]);    
     const navigation = useNavigation();
 
-    function DeleteMateria(id){
-        fetch(api.baseURL + '/' + 'RemoverMateriaPorId'+ '/' + id , {
-            method: 'DELETE'
-        });
+    function DeleteMateria(id) {
+        Alert.alert(
+            "Excluir",
+            "Confirmar Exclusão?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK", onPress: () => fetch(api.baseURL + '/' + 'RemoverMateriaPorId' + '/' + id, {
+                        method: 'DELETE'
+                    })
+                }
+            ]
+        );
     }
 
     function loadMateriasList() {

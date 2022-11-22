@@ -5,7 +5,8 @@ import {
     Pressable,
     Keyboard,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import Title from "../Title";
 import styles from "./styles/IndexEventoStyle";
@@ -18,10 +19,23 @@ function IndexEvento() {
     const [EventoList, setEventoList] = useState([]);    
     const navigation =   useNavigation();
 
-    function DeleteEvento(id_Evento){
-        fetch(api.baseURL + '/' + 'RemoverEventoPorId'+ '/' + id_Evento , {
-            method: 'DELETE'
-        });
+    function DeleteEvento(id_Evento) {
+        Alert.alert(
+            "Excluir",
+            "Confirmar Exclusão?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK", onPress: () => fetch(api.baseURL + '/' + 'RemoverEventoPorId' + '/' + id_Evento, {
+                        method: 'DELETE'
+                    })
+                }
+            ]
+        );
     }
 
     function loadEventosList() {
